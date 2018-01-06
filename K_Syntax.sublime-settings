@@ -1,0 +1,4 @@
+// These settings override both User and Default settings for the KSH syntax
+{
+	"color_scheme": "Packages/K_Teo/K_Teo.tmTheme"
+}

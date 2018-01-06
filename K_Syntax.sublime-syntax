@@ -1,0 +1,118 @@
+%YAML 1.2
+---
+
+name: K_Highlighter
+file_extensions: [k]
+scope: source.k 
+
+contexts:
+
+
+
+  prototype:
+    - include: comments
+
+  main:
+    - include: paranth
+    - include: culoare1
+    - include: culoare2
+    - include: culoare3
+    - include: culoare4
+    - include: numere
+    - include: celelalte
+    - include: chestii
+  
+    - include: zone
+    - include: strings
+    - include: captura
+    - include: predef
+    
+
+  chestii:
+    - match: (?i)(module\s+|imports\s+)([-A-Za-z0-9]+\s)
+      captures: 
+        1: rosu_inchis
+        2: portocaliu
+        
+  
+
+
+  culoare1:
+    - match: '\b(endmodule)\b'
+      scope: rosu_inchis
+
+  culoare2:
+    - match: '\b(configuration|require|Kresult|syntax|rule|when|notBool)\b'
+      scope: rosu
+
+  culoare3:
+    - match: '\b(Int|String|Bool|Id|Float|List)\b'
+      scope: albastru
+
+  culoare4:
+    - match: ::=|=>|\%|\+|\*|/| - | \|-> 
+      scope: portocaliu
+
+  numere:
+    - match: '(-)?[0-9]+'
+      scope: number
+
+  celelalte:
+    - match: '[a-zA-Z][0-9]+'
+      scope: main
+
+  predef:
+    - match: '\$PGM|PGM|\.Map|Map|\.List'
+      scope: verde_inchis
+
+
+
+
+
+
+
+
+
+
+  paranth:
+    - match: '(\[[-A-Za-z\(0-9\)]+\])\s'
+      scope: roz_ish
+      
+
+
+
+  zone:
+    - match: '<'
+      scope: verde
+      push: zone2
+
+  zone2:
+    
+    - meta_scope: verde
+    - match: '>'
+      pop: true
+
+  
+
+     
+
+  strings:
+    - match: '"'
+      scope: string
+      push: inside_string
+
+  inside_string:
+    
+    - meta_scope: string
+    - match: '"'
+      pop: true
+
+  comments:
+    - match: '//'
+      scope: comment
+      push: sfarsit_comment
+       
+  sfarsit_comment: 
+        - meta_scope: comment
+        - match: $   # sfarsit de linie (\n)
+          pop: true
