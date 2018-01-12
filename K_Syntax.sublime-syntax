@@ -6,43 +6,39 @@ file_extensions: [k]
 scope: source.k 
 
 contexts:
-
-
-
   prototype:
     - include: comments
 
   main:
-    - include: paranth
+    
+    - include: module
+
     - include: culoare1
     - include: culoare2
     - include: culoare3
     - include: culoare4
     - include: numere
     - include: celelalte
-    - include: chestii
-  
-    - include: zone
-    - include: strings
-    - include: captura
     - include: predef
+    - include: paranth
+    - include: celule
+    - include: strings
+    
+    
     
 
-  chestii:
-    - match: (?i)(module\s+|imports\s+)([-A-Za-z0-9]+\s)
+  module:
+    - match: (module\s+|imports\s+)([-A-Za-z0-9]+\s)
       captures: 
         1: rosu_inchis
         2: portocaliu
-        
-  
-
 
   culoare1:
     - match: '\b(endmodule)\b'
       scope: rosu_inchis
 
   culoare2:
-    - match: '\b(configuration|require|Kresult|syntax|rule|when|notBool)\b'
+    - match: '\b(configuration|requires|Kresult|syntax|rule|when|notBool)\b'
       scope: rosu
 
   culoare3:
@@ -75,26 +71,20 @@ contexts:
 
 
   paranth:
-    - match: '(\[[-A-Za-z\(0-9\)]+\])\s'
+    - match: '(\[[A-Za-z\(0-9\)\,A-Za-z]+\])\s'
       scope: roz_ish
       
 
-
-
-  zone:
+  celule:
     - match: '<'
       scope: verde
-      push: zone2
+      push: celule2
 
-  zone2:
+  celule2:
     
     - meta_scope: verde
     - match: '>'
       pop: true
-
-  
-
-     
 
   strings:
     - match: '"'
@@ -102,7 +92,6 @@ contexts:
       push: inside_string
 
   inside_string:
-    
     - meta_scope: string
     - match: '"'
       pop: true

@@ -3,8 +3,8 @@
     [
         
         { "trigger": "cell", "contents": "<$1> </$1>" },
-        { "trigger": "module", "contents": "module <${1:Name}> endmodule" },
-        { "trigger": "trecere", "contents": "|->" },
+        { "trigger": "module", "contents": "module ${1:Name} endmodule" },
+        { "trigger": "trec", "contents": "|->" },
         { "trigger": "syntax", "contents": "syntax ${1:Name} ::= " },
         { "trigger": "List", "contents": "List{$1}" },
         { "trigger": "configuration", "contents": "configuration <${1:Name}>  </$1> " },

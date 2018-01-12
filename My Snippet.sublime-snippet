@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[module ${1:Name}-SYNTAX
+
+
+endmodule
+
+module $1
+imports $1-SYNTAX
+
+
+endmodule
+
+
+]]></content>
+
+
+<tabTrigger>start</tabTrigger>
+	
+</snippet>
+
