@@ -25,6 +25,9 @@ contexts:
     - include: strings
     - include: syntax1
     - include: syntax2
+    - include: syntax3
+    - include: syntax4
+    - include: syntax5
     
     
     
@@ -47,6 +50,22 @@ contexts:
       captures: 
         1: rosu
         2: rosu_inchis
+        
+  syntax3:
+    - match: (syntax\s+)([A-Z])
+      captures: 
+        1: rosu
+        2: main
+
+  syntax4:
+    - match: (syntax\s+)([a-z])
+      captures: 
+        1: rosu
+        2: rosu_inchis
+
+  syntax5:
+    - match: (syntax\s+)
+      scope: rosu
 
 
 
