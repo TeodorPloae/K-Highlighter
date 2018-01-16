@@ -58,6 +58,22 @@
 				<string>#AE81FF</string>
 			</dict>
 		</dict>
+
+		<dict>
+			<key>name</key>
+			<string>modules</string>
+			<key>scope</key>
+			<string>mov</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#8909f9</string>
+			</dict>
+		</dict>
+
+
+
+
 		<dict>
 			<key>name</key>
 			<string>Variable</string>

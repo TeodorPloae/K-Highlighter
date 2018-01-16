@@ -23,6 +23,8 @@ contexts:
     - include: paranth
     - include: celule
     - include: strings
+    - include: syntax1
+    - include: syntax2
     
     
     
@@ -30,15 +32,31 @@ contexts:
   module:
     - match: (module\s+|imports\s+)([-A-Za-z0-9]+\s)
       captures: 
-        1: rosu_inchis
+        1: mov
         2: portocaliu
+
+
+  syntax1:
+    - match: (syntax\s+)([A-Z]+[-_a-zA-Z]+\s+)
+      captures: 
+        1: rosu
+        2: main
+
+  syntax2:
+    - match: (syntax\s+)([a-z][-_A-Za-z]+\s+)
+      captures: 
+        1: rosu
+        2: rosu_inchis
+
+
+
 
   culoare1:
     - match: '\b(endmodule)\b'
-      scope: rosu_inchis
+      scope: mov
 
   culoare2:
-    - match: '\b(configuration|requires|Kresult|syntax|rule|when|notBool)\b'
+    - match: '\b(configuration|requires|Kresult|rule|when|notBool)\b'
       scope: rosu
 
   culoare3:
